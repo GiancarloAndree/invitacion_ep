@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#210719">
+  <title>Una cita contigo ❤️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Música: musica.mp3 va junto a index.html -->
+  <audio id="backgroundMusic" src="musica.mp3"
+         preload="auto" loop playsinline></audio>
+
+  <!-- Mariposa gigante y fuego del fondo -->
+  <div class="fire-background" aria-hidden="true">
+    <div class="fire-glow"></div>
+    <div class="flames"></div>
+    <img class="giant-butterfly"
+         src="assets/mariposa.png" alt="">
+  </div>
+
+  <div class="scene">
+
+    <!-- Barra superior -->
+    <header class="topbar">
+      <span class="music-note" aria-hidden="true">♫</span>
+
+      <div class="song-label">
+        <strong>Nuestra canción</strong>
+        <span>solo para ti… 💗</span>
+      </div>
+
+      <!-- El girasol es el control de música -->
+      <button class="sunflower-control" id="musicToggle"
+              aria-label="Activar música"
+              title="Activar o pausar música">
+        <img src="assets/girasol.png" alt="">
+      </button>
+    </header>
+
+    <!-- Decoración romántica -->
+    <div class="garden" aria-hidden="true">
+      <span class="flower f1">🌹</span>
+      <span class="flower f2">🌻</span>
+      <span class="flower f3">🌹</span>
+      <span class="flower f4">🌹</span>
+      <span class="flower f5">🌻</span>
+      <span class="flower f6">🌹</span>
+
+      <img class="mascot" src="assets/kuromi.png" alt="">
+      <img class="mascot-bottom" src="assets/kuromi-beso.png" alt="">
+    </div>
+
+    <!-- Invitación -->
+    <main class="card">
+      <div class="ribbon" aria-hidden="true">🎀</div>
+      <span class="card-heart" aria-hidden="true">💗</span>
+
+      <h1>Mi amor… 💕</h1>
+
+      <p class="message">
+        Quiero que sepas que hoy quiero verte, reír contigo
+        y seguir escribiendo nuestra historia. Cada momento
+        a tu lado se vuelve especial. 💜
+      </p>
+
+      <p class="question">
+        ¿Te gustaría tener una cita conmigo hoy?
+      </p>
+
+      <div class="details">
+        🗓️ 14 de octubre<br>
+        🕣 8:30 p. m.
+      </div>
+
+      <p class="closing">
+        Será una noche especial… 🌹
+      </p>
+    </main>
+
+    <!-- Respuestas -->
+    <div class="buttons" id="buttonArea">
+      <button class="choice" id="yes">Sí 💖</button>
+      <button class="choice" id="no">No 🙈</button>
+    </div>
+
+    <p class="hint">
+      Pista: el “No” es un poquito travieso… 😈
+    </p>
+
+    <footer class="footer">
+      Hecho con amor, solo para ti 💜🌹<br>
+      ✨ Tú y yo… una historia bonita ✨
+    </footer>
+  </div>
+
+  <!-- Decoraciones flotantes -->
+  <div class="butterfly b1" aria-hidden="true">🦋</div>
+  <div class="butterfly b2" aria-hidden="true">🦋</div>
+  <div class="butterfly b3" aria-hidden="true">🦋</div>
+
+  <div class="bug-row" aria-hidden="true">
+    <span>🐞</span><span>🐞</span><span>🐞</span>
+    <span>🐞</span><span>🐞</span>
+  </div>
+
+  <div class="toast" id="toast" role="status">
+    💖 ¡Sabía que dirías que sí! Abriendo WhatsApp… 💚
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,572 @@
+:root {
+  --plum: #32123f;
+  --pink: #ff6ca8;
+  --rose: #c91651;
+  --cream: #fff0e8;
+  --lilac: #d9a5ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #4b1738;
+  font-family: Georgia, "Trebuchet MS", sans-serif;
+  overflow-x: hidden;
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 50% 10%, #762354 0%, #32123f 48%, #160719 100%);
+  padding: 18px 12px 72px;
+}
+
+/* Estrellitas del fondo */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .35;
+  background-image:
+    radial-gradient(#fff 1px, transparent 1.6px),
+    radial-gradient(#ffc9e2 1px, transparent 1.8px);
+  background-size: 71px 71px, 113px 113px;
+  background-position: 0 0, 31px 46px;
+  z-index: -1;
+}
+
+/* ==================================
+   MARIPOSA GIGANTE Y FUEGO
+   ================================== */
+
+.fire-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.giant-butterfly {
+  position: absolute;
+  width: min(110vw, 850px);
+  height: min(100vh, 850px);
+  object-fit: contain;
+  object-position: center;
+  opacity: .30;
+  filter:
+    drop-shadow(0 0 12px #ff174d)
+    drop-shadow(0 0 36px #ff183c)
+    drop-shadow(0 0 75px #ff4a00);
+  animation: butterflyGlow 4s ease-in-out infinite alternate;
+}
+
+/* Resplandor cálido detrás de la mariposa */
+.fire-glow {
+  position: absolute;
+  width: 90vw;
+  height: 90vw;
+  max-width: 800px;
+  max-height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #ff310044 0%,
+    #ff1b302b 30%,
+    #9c123b18 55%,
+    transparent 72%
+  );
+  animation: firePulse 2.5s ease-in-out infinite alternate;
+}
+
+/* Llamas dibujadas con gradientes CSS */
+.flames {
+  position: absolute;
+  inset: auto -10% -8%;
+  height: 65%;
+  opacity: .40;
+  filter: blur(18px);
+  background:
+    radial-gradient(ellipse at 12% 90%, #ff2b12 0 7%, transparent 35%),
+    radial-gradient(ellipse at 28% 85%, #ff7800 0 9%, transparent 38%),
+    radial-gradient(ellipse at 48% 95%, #ff251b 0 12%, transparent 42%),
+    radial-gradient(ellipse at 69% 86%, #ff6900 0 10%, transparent 38%),
+    radial-gradient(ellipse at 89% 90%, #ff3010 0 9%, transparent 35%);
+  animation: flameMove 3s ease-in-out infinite alternate;
+}
+
+@keyframes butterflyGlow {
+  from {
+    transform: scale(.96) rotate(-2deg);
+    filter:
+      drop-shadow(0 0 10px #ff174d)
+      drop-shadow(0 0 30px #ff183c)
+      drop-shadow(0 0 55px #ff4a00);
+  }
+  to {
+    transform: scale(1.04) rotate(2deg);
+    filter:
+      drop-shadow(0 0 18px #ff174d)
+      drop-shadow(0 0 45px #ff183c)
+      drop-shadow(0 0 90px #ff4a00);
+  }
+}
+
+@keyframes firePulse {
+  from { transform: scale(.9); opacity: .65; }
+  to { transform: scale(1.12); opacity: 1; }
+}
+
+@keyframes flameMove {
+  from { transform: translateY(10px) scaleX(.95); }
+  to { transform: translateY(-18px) scaleX(1.06); }
+}
+
+/* ==================================
+   CONTENEDOR Y MÚSICA
+   ================================== */
+
+.scene {
+  position: relative;
+  max-width: 620px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: min(100%, 490px);
+  margin: 0 auto 14px;
+  padding: 8px 13px;
+  border: 2px solid #ff78b7;
+  border-radius: 999px;
+  background: #1d102be8;
+  color: #ffe7f3;
+  box-shadow: 0 0 22px #ff4d9d38;
+  position: relative;
+  z-index: 4;
+}
+
+.music-note {
+  font-size: 27px;
+  color: #ffadd2;
+}
+
+.song-label {
+  flex: 1;
+  font-size: clamp(12px, 3.5vw, 15px);
+  line-height: 1.4;
+}
+
+.song-label strong,
+.song-label span {
+  display: block;
+}
+
+.song-label span {
+  color: #ffadd2;
+}
+
+/* Girasol pequeño como botón */
+.sunflower-control {
+  border: 2px solid #ffe1a1;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  padding: 3px;
+  background: #54253f;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 12px #ffb52e65;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sunflower-control img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: sunflowerSpin 7s linear infinite;
+  animation-play-state: paused;
+}
+
+.sunflower-control.is-playing img {
+  animation-play-state: running;
+}
+
+.sunflower-control:active {
+  transform: scale(.94);
+}
+
+@keyframes sunflowerSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ==================================
+   FLORES Y KUROMI
+   ================================== */
+
+.garden {
+  position: absolute;
+  inset: 78px 0 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.flower {
+  position: absolute;
+  font-size: clamp(30px, 8vw, 56px);
+  filter: drop-shadow(0 5px 6px #12061b);
+  animation: sway 3.5s ease-in-out infinite alternate;
+}
+
+.f1 { left: -4px; top: 6%; }
+.f2 { right: -2px; top: 13%; animation-delay: -1s; }
+.f3 { left: 1%; top: 45%; animation-delay: -.7s; }
+.f4 { right: 0; top: 51%; animation-delay: -1.4s; }
+.f5 { left: 7%; bottom: 8%; font-size: 42px; }
+.f6 { right: 5%; bottom: 6%; font-size: 42px; }
+
+.mascot {
+  position: absolute;
+  right: 2%;
+  top: 0;
+  width: clamp(76px, 22vw, 126px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 7px 5px #170a22);
+  transform: rotate(7deg);
+  animation: bob 3s ease-in-out infinite;
+  z-index: 2;
+}
+
+.mascot-bottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: clamp(82px, 24vw, 135px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 4px #170a22);
+  animation: bob 3.4s ease-in-out infinite;
+  z-index: 2;
+}
+
+/* ==================================
+   TARJETA ROMÁNTICA
+   ================================== */
+
+.card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 470px);
+  margin: 45px auto 22px;
+  padding: clamp(25px, 6vw, 40px) clamp(20px, 6vw, 36px) 28px;
+  text-align: center;
+  border: 2px solid #ffd1d9;
+  border-radius: 19px 24px 18px 22px;
+  background: linear-gradient(
+    135deg,
+    #fff7eff5,
+    #ffe2e2f5 55%,
+    #fff0e6f5
+  );
+  box-shadow:
+    0 16px 42px #09041980,
+    inset 0 0 0 5px #fff8f1;
+  color: #4a1939;
+  transform: rotate(-.5deg);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px dashed #e7a2b1;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.ribbon {
+  position: absolute;
+  top: -19px;
+  left: 20px;
+  font-size: 38px;
+  transform: rotate(-15deg);
+  filter: drop-shadow(0 3px 2px #7d163d);
+}
+
+.card-heart {
+  position: absolute;
+  right: 13px;
+  top: 43%;
+  font-size: 30px;
+  animation: pulse 1.4s infinite;
+}
+
+h1 {
+  font-size: clamp(31px, 8vw, 44px);
+  font-style: italic;
+  color: #70194b;
+  margin: 7px 0 18px;
+  position: relative;
+}
+
+.message {
+  font-size: clamp(16px, 4.2vw, 20px);
+  line-height: 1.6;
+  margin: 0 auto 18px;
+  max-width: 360px;
+  position: relative;
+}
+
+.question {
+  font-size: clamp(22px, 5.6vw, 29px);
+  font-style: italic;
+  line-height: 1.35;
+  color: #b9185b;
+  margin: 16px 0 17px;
+  position: relative;
+}
+
+.details {
+  font-size: clamp(17px, 4.6vw, 21px);
+  line-height: 1.8;
+  font-weight: bold;
+  color: #791c4d;
+  position: relative;
+}
+
+.closing {
+  font-size: 18px;
+  font-style: italic;
+  margin-top: 14px;
+  position: relative;
+}
+
+/* ==================================
+   BOTONES SÍ Y NO
+   ================================== */
+
+.buttons {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 100px;
+  flex-wrap: wrap;
+}
+
+.choice {
+  border: 0;
+  border-radius: 999px;
+  font-weight: bold;
+  font-size: clamp(20px, 5.5vw, 27px);
+  padding: 15px 30px;
+  cursor: pointer;
+  box-shadow: 0 7px 0 #590c2b, 0 0 20px #ff5a9d5e;
+  transition: transform .16s, filter .16s;
+  touch-action: manipulation;
+}
+
+.choice:active {
+  transform: scale(.96);
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+#yes {
+  background: linear-gradient(135deg, #ff7eac, #e91660);
+  color: white;
+  border: 2px solid #ffd8e8;
+  text-shadow: 0 1px 2px #9c1245;
+  min-width: 145px;
+}
+
+#no {
+  background: #27122f;
+  color: #ffe6f1;
+  border: 2px solid #ff76b6;
+  box-shadow: 0 6px 0 #100817, 0 0 15px #ff5a9d30;
+  position: relative;
+  z-index: 9;
+  min-width: 125px;
+}
+
+.hint {
+  font-size: 13px;
+  color: #ffd8ec;
+  text-align: center;
+  margin: 5px 0 15px;
+}
+
+.footer {
+  margin-top: 18px;
+  color: #ffc9e3;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.7;
+  text-shadow: 0 2px 8px #000;
+}
+
+/* ==================================
+   MARIPOSAS, MARIQUITAS Y PÉTALOS
+   ================================== */
+
+.butterfly {
+  position: fixed;
+  z-index: 3;
+  pointer-events: none;
+  font-size: 25px;
+  animation: fly 11s linear infinite;
+  filter: drop-shadow(0 2px 4px #ff6ca8);
+}
+
+.b1 { left: -35px; top: 25%; animation-delay: -2s; }
+.b2 { right: -35px; top: 42%; animation-delay: -7s; font-size: 31px; }
+.b3 { left: -35px; top: 68%; animation-delay: -5s; font-size: 21px; }
+
+.bug-row {
+  position: fixed;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+  z-index: 4;
+  font-size: 23px;
+  filter: drop-shadow(0 2px 2px #170a22);
+}
+
+.bug-row span {
+  animation: crawl 7s linear infinite;
+}
+
+.bug-row span:nth-child(2) { animation-delay: -3s; }
+.bug-row span:nth-child(3) { animation-delay: -5s; }
+
+.petal {
+  position: fixed;
+  top: -25px;
+  z-index: 2;
+  pointer-events: none;
+  animation: fall linear infinite;
+  opacity: .9;
+}
+
+.toast {
+  position: fixed;
+  inset: auto 14px 50px;
+  z-index: 20;
+  display: none;
+  margin: auto;
+  max-width: 420px;
+  background: #fff0f6;
+  color: #6e1748;
+  border: 2px solid #ff8fbd;
+  border-radius: 18px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 10px 35px #0008;
+}
+
+.toast.show {
+  display: block;
+  animation: pop .3s ease-out;
+}
+
+/* ==================================
+   ANIMACIONES
+   ================================== */
+
+@keyframes sway {
+  from { transform: rotate(-7deg) translateY(0); }
+  to { transform: rotate(7deg) translateY(-7px); }
+}
+
+@keyframes bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -9px; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+}
+
+@keyframes fly {
+  0% { transform: translate(0, 0) rotate(-10deg); }
+  25% { transform: translate(30vw, -35px) rotate(15deg); }
+  50% { transform: translate(60vw, 25px) rotate(-12deg); }
+  75% { transform: translate(90vw, -25px) rotate(12deg); }
+  100% { transform: translate(120vw, 10px) rotate(-10deg); }
+}
+
+@keyframes crawl {
+  0% { transform: translateX(-15vw); }
+  50% { transform: translateX(15vw); }
+  100% { transform: translateX(-15vw); }
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+
+@keyframes pop {
+  from { transform: scale(.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Móviles */
+@media (max-width: 380px) {
+  body { padding: 12px 9px 65px; }
+
+  .card {
+    margin-top: 47px;
+    padding: 25px 17px;
+  }
+
+  .mascot { right: 0; }
+  .choice { padding: 13px 23px; }
+  .f1, .f3 { left: -10px; }
+  .f2, .f4 { right: -9px; }
+
+  .giant-butterfly {
+    width: 125vw;
+    height: 85vh;
+    opacity: .24;
+  }
+}
+
+/* Accesibilidad: reduce las animaciones si el usuario lo solicita */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
